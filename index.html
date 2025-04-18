@@ -9,6 +9,87 @@
 </head>
 
 <body>
+    
+    <script>
+        // الحل النهائي المضمون للتمرير السلس
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('a[href^="#"]');
+            const header = document.querySelector('header');
+            const headerHeight = header ? header.offsetHeight : 100;
+
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const target = document.querySelector(targetId);
+
+                    if (target) {
+                        const targetPosition = target.offsetTop - headerHeight;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+
+                        // لإصلاح تاريخ المتصفح
+                        history.replaceState(null, null, targetId);
+                    }
+                });
+            });
+
+            // إصلاح إضافي للهواتف
+            if ('scrollBehavior' in document.documentElement.style === false) {
+                const smoothScroll = function(targetId) {
+                    const target = document.querySelector(targetId);
+                    if (!target) return;
+                    
+                    const targetPosition = target.offsetTop - headerHeight;
+                    const startPosition = window.pageYOffset;
+                    const distance = targetPosition - startPosition;
+                    const duration = 800;
+                    let startTime = null;
+
+                    const animation = function(currentTime) {
+                        if (startTime === null) startTime = currentTime;
+                        const timeElapsed = currentTime - startTime;
+                        const run = ease(timeElapsed, startPosition, distance, duration);
+                        window.scrollTo(0, run);
+                        if (timeElapsed < duration) requestAnimationFrame(animation);
+                    };
+
+                    const ease = function(t, b, c, d) {
+                        t /= d/2;
+                        if (t < 1) return c/2*t*t + b;
+                        t--;
+                        return -c/2 * (t*(t-2) - 1) + b;
+                    };
+
+                    requestAnimationFrame(animation);
+                };
+
+                document.querySelectorAll('a[href^="#"]').forEach(link => {
+                    link.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        smoothScroll(this.getAttribute('href'));
+                    });
+                });
+            }
+        });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    
+    // إغلاق القائمة عند النقر خارجها
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.nav') && navLinks.style.display === 'flex') {
+            navLinks.style.display = 'none';
+        }
+    });
+});
+    </script>
+
+<body>
     <header>
 
         <div class="logo-container">
@@ -38,8 +119,7 @@
             <i class="fas fa-search icon-style"></i>
             <i class="fas fa-heart icon-style"></i>
         </div>
-        
-
+      
     </header>
 
 
