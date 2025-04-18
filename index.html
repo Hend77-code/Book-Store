@@ -8,9 +8,10 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
+
 <body>
-    
-    <script>
+
+      <script>
         // الحل النهائي المضمون للتمرير السلس
         document.addEventListener('DOMContentLoaded', function() {
             const links = document.querySelectorAll('a[href^="#"]');
@@ -87,9 +88,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+document.querySelectorAll('.book').forEach(book => {
+  book.style.scrollSnapAlign = 'start';
+});
+
     </script>
 
-<body>
     <header>
 
         <div class="logo-container">
@@ -121,7 +126,6 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
       
     </header>
-
 
     <section id="home">
     <div class="hero">
