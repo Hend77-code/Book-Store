@@ -295,7 +295,6 @@ header {
     font-size: 30px;
     text-align: center;
     margin-bottom: 40px;
-    margin-top: 40px;
 }
 }
 .arrival-container {
@@ -318,12 +317,14 @@ header {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     flex: 0 0 auto;
     overflow: hidden;
+    transition: box-shadow 0.3s ease;
     img {
     width: 60%;
     height: 65%;
     padding-top: 1px;
     margin-bottom: 5px;
-    transition: transform 0.1s ease;
+    transition: transform 0.2s ease;
+    cursor: pointer;
     }
     p{
     font-family:'Times New Roman', Times, serif;
@@ -351,6 +352,11 @@ header {
 }
 .arrival-card img:hover {
   transform: scale(1.1);
+}
+
+.arrival-card:hover {
+  box-shadow: 0 0 5px var(--colorPage);
+  transition: box-shadow 0.3s ease;
 }
 /* style section Reviews */
 h1 {
