@@ -1,3 +1,5 @@
+/* Google Fonts Link */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 .books-container {
   overflow-x: auto;
   scroll-snap-type: x mandatory;
@@ -49,57 +51,48 @@ header {
     align-items: center; 
     padding: 10px 200px; 
     background-color: #fff; 
-
     /* تنسيق اللوجو */
     .logo {
         width: 25%;
         min-width: 100px;
+        margin-right: 50px;
     }
     .logo-container {
       flex: 0.25;
     }
-    .nav-toggle {
-      display: none;
-    }
-    /* تنسيق القائمة */
-    .nav {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 20px; 
-    .nav-links {
-    display: flex;
-    gap: 15px;
-    overflow: hidden;
-    } 
-    a{
-    text-decoration: none;
+   
+    nav {
+    background: #fff;
+    margin-right: 0px;
+    color: #000;
+    ul{
+    li {
+    display: inline-block;
+    a {
     color: black;
-    font-size: 15px;
-    white-space: nowrap;
+    font-size: 17px;
+    padding: 7px 13px;
+    border-radius: 3px;
+    text-decoration: none;
+      } 
+    } 
     }
-    .hamburger {
-    display: none;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 24px;
-    height: 18px;
+    }
+    .checkbtn {
+    font-size: 22px;
+    color: black;
+    float: right;
+    margin-right: 100px;
+    margin-top: 20px;
     cursor: pointer;
-    position: relative;
+    display: none;
     }
-      
-    .hamburger span {
-    display: block;
-    width: 100%;
-    height: 2px;
-    background-color: black;
-    transition: all 0.3s ease;
-    }    
-    }  
-    #nav-toggle:checked + .nav .nav-links {
-    opacity: 1;
-    height: auto;
+    #check {
+    display: none;
+    }
+    label.logo {
+    color: white;
+    font-weight: bold;
     }
     /* تنسيق الأيقونات */
     .icon-style {
@@ -615,41 +608,49 @@ footer {
     width: 100%;
     padding: 10px 20px;
     flex-direction: row;
-    
-    .nav {
-      position: static !important;
-      left: auto !important;
-      transform: none !important;
-      margin-left: 10px;
+
+    .checkbtn {
+      display: inline-block;
     }
-    
-    .nav-links {
-      display: none;
-      position: absolute;
-      top: 60px; 
-      right: 15px;
-      background: white;
-      width: 200px;
-      flex-direction: column;
-      padding: 15px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      border-radius: 5px;
+    label.logo {
+      font-size: 21px;
     }
-    #nav-toggle:checked + .nav .nav-links {
-      display: flex !important;
+    ul {
+      position: fixed;
+      width: 100%;
+      height: 100vh;
+      background: #282a35;
+      top: 80px;
+      left: -100%;
+      text-align: center;
+      transition: all .5s;
     }
-    
-    .hamburger {
-      display: flex !important;
-      margin-left: 15px;
+    nav ul li {
+      display: block;
+      margin: 50px 0;
+      line-height: 30px;
+    }
+    nav ul li a {
+      font-size: 20px;
+    }
+    a:hover,
+    a.active {
+      background: none;
+      color: #fff;
+    }
+    #check:checked~ul {
+      left: 0;
     }
     
     .logo {
       width: 25%;
     }
   }
+  .hero{
+   margin-top: 40px; 
+   padding: 30px 20px;
+  }
   .hero, .about {
-    padding: 30px 20px;
     flex-direction: column;
     .bookshelf img{
       height: 100%;
@@ -706,4 +707,7 @@ footer {
     margin-right: 40px;
   }
 }
+
+
+
 
